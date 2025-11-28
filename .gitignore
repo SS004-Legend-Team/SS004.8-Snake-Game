@@ -1,0 +1,36 @@
+# Compiled files
+*.o
+*.obj
+*.exe
+*.out
+*.app
+
+# Executable
+snake_game
+snake_game.exe
+
+# Build directories
+build/
+bin/
+obj/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Debug files
+*.dSYM/
+*.pdb
+
+# Temporary files
+*.tmp
+*.log
+
