@@ -52,9 +52,9 @@ g++ -o snake_game.exe snake_game.cpp -std=c++11
 #### Trên Linux/macOS
 
 ```bash
-g++ -o snake_game snake_game.cpp -std=c++11
+g++ -o snake_game main.cpp game.cpp snake.cpp food.cpp utils.cpp -std=c++11
 # hoặc
-clang++ -o snake_game snake_game.cpp -std=c++11
+clang++ -o snake_game main.cpp game.cpp snake.cpp food.cpp utils.cpp -std=c++11
 ```
 
 ## Cách chơi
@@ -87,25 +87,50 @@ clang++ -o snake_game snake_game.cpp -std=c++11
 ```
 SS004.8-Snake-Game/
 ├── README.md           # Tài liệu hướng dẫn
-├── snake_game.cpp      # File mã nguồn chính
-├── Makefile            # (Tùy chọn) File build tự động
-└── .gitignore          # (Tùy chọn) File loại trừ Git
+├── main.cpp            # File mã nguồn chính (hàm main)
+├── constants.h         # Hằng số và enum (WIDTH, HEIGHT, Difficulty)
+├── point.h             # Cấu trúc Point (x, y)
+├── utils.h             # Header cho các hàm hỗ trợ cross-platform
+├── utils.cpp           # Implementation các hàm hỗ trợ
+├── snake.h             # Header cho lớp Snake
+├── snake.cpp           # Implementation lớp Snake
+├── food.h              # Header cho lớp Food
+├── food.cpp            # Implementation lớp Food
+├── game.h              # Header cho lớp Game
+├── game.cpp            # Implementation lớp Game
+├── Makefile            # File build tự động
+└── .gitignore          # File loại trừ Git
 ```
 
 ## Cấu trúc mã nguồn
 
-Code được tổ chức thành các lớp và thành phần chính:
+Code được tổ chức thành các file riêng biệt theo nguyên tắc tách biệt (separation of concerns):
 
-- **Point struct**: Cấu trúc điểm (x, y) để biểu diễn vị trí
-- **Snake Class**: Quản lý vị trí, di chuyển và tăng trưởng của rắn
-- **Food Class**: Quản lý vị trí mồi và tạo mồi mới
-- **Game Class**: 
+### Header Files (.h)
+- **constants.h**: Định nghĩa hằng số (WIDTH, HEIGHT) và enum Difficulty
+- **point.h**: Cấu trúc Point (x, y) để biểu diễn vị trí
+- **utils.h**: Khai báo các hàm hỗ trợ cross-platform
+- **snake.h**: Khai báo lớp Snake
+- **food.h**: Khai báo lớp Food
+- **game.h**: Khai báo lớp Game
+
+### Implementation Files (.cpp)
+- **main.cpp**: Hàm main - điểm vào của chương trình
+- **utils.cpp**: Implementation các hàm hỗ trợ cross-platform (clearScreen, sleep, kbhit, getch)
+- **snake.cpp**: Implementation lớp Snake - Quản lý vị trí, di chuyển và tăng trưởng của rắn
+- **food.cpp**: Implementation lớp Food - Quản lý vị trí mồi và tạo mồi mới
+- **game.cpp**: Implementation lớp Game bao gồm:
   - Game Loop: Vòng lặp chính của trò chơi
   - Game Board: Quản lý màn hình và hiển thị
   - Input Handler: Xử lý đầu vào từ bàn phím (hỗ trợ cross-platform)
   - Collision Detection: Phát hiện va chạm với tường và cơ thể
   - Difficulty Selection: Menu chọn độ khó khi bắt đầu
   - Game Speed Control: Điều chỉnh tốc độ game dựa trên độ khó
+
+### Lợi ích của cấu trúc này:
+- **Dễ bảo trì**: Mỗi class/file có trách nhiệm rõ ràng
+- **Dễ mở rộng**: Có thể thêm tính năng mới mà không ảnh hưởng đến code cũ
+- **Tái sử dụng**: Các class có thể được sử dụng trong các project khác
 - **Cross-platform support**: Hỗ trợ cả Windows và Unix (Linux/macOS)
 
 ## Độ khó

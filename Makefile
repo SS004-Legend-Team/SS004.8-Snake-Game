@@ -10,7 +10,7 @@ CXXFLAGS = -std=c++11 -Wall -Wextra
 TARGET = snake_game
 
 # File nguồn
-SRC = snake_game.cpp
+SRC = main.cpp game.cpp snake.cpp food.cpp utils.cpp
 
 # File object
 OBJ = $(SRC:.cpp=.o)
