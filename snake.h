@@ -25,3 +25,4 @@ public:
 
 #endif // SNAKE_H
 
+//Kết thúc
