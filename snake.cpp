@@ -74,4 +74,4 @@ bool Snake::checkCollision() const {
 int Snake::getLength() const {
     return body.size();
 }
-//ket thuc
+
